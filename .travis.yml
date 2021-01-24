@@ -4,11 +4,9 @@ language: java
 #we use the java development kit (jdk)
 jdk:
 - openjdk8
-
 services:
  #Linking Travis CI and Docker
  - docker
-
 before_install:
  - mvn clean
  - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
@@ -17,3 +15,6 @@ before_install:
 script:
 # we avoid this error : "the job expected the maximum log length and has been terminated"
  - cat $HOME/.m2/settings.xml
+ - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+ - mvn test
+ - mvn deploy
