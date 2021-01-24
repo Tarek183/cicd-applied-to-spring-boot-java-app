@@ -7,6 +7,14 @@ jdk:
 services:
  #Linking Travis CI and Docker
  - docker
+
+# SonarCloud
+addons:
+ sonarcloud:
+  organization: "cicd-applied-to-spring-boot-java-app1"
+  token:
+   secure: $SONAR_TOKEN # encrypted value of your token
+
 before_install:
  - mvn clean
  - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
