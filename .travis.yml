@@ -9,12 +9,12 @@ services:
  - docker
 before_install:
  - mvn clean
+ - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+ - mvn test
  - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
  - docker pull openjdk:8-jdk-alpine
 
 script:
 # we avoid this error : "the job expected the maximum log length and has been terminated"
  - cat $HOME/.m2/settings.xml
- - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
- - mvn test
  - mvn deploy
