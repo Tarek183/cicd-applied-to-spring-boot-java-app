@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cicd</groupId>
-	<artifactId>cicd-applied-to-spring-boot-java-app</artifactId>
+	<artifactId>cicd-applied-to-spring-boot-java-app10</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cicd-applied-to-spring-boot-java-app</name>
+	<name>cicd-applied-to-spring-boot-java-app10</name>
 	<description>Implementing CI/CD on Spring Boot Java App</description>
 	
 	<properties>
