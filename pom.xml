@@ -84,7 +84,7 @@
 				</executions>
 	            <configuration>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
-					<tag>${project.version}${git.commit.id.abbrev}</tag>
+					<imageName>${project.version}:${git.commit.id.abbrev}</imageName>
 	                <serverId>index.docker.io</serverId>
 	      		<registryUrl>https://index.docker.io:443/v1/</registryUrl>
 	            </configuration>
