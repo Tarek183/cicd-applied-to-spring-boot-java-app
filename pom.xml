@@ -16,7 +16,8 @@
 	
 	<properties>
 		<java.version>1.8</java.version>
-		
+		<version.number>${git.commit.time}.${git.commit.id.abbrev}</version.number>
+
       	<!-- solving error : Invalid or corrupt jarfile /app.jar -->
       
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -67,7 +68,24 @@
 			</plugin>
 			
 			<!-- spotify's dockerfile-maven-plugin -->
-			
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.2.4</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<dateFormat>yyyyMMdd-HHmmss</dateFormat><!--  human-readable part of the version number -->
+					<dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+					<generateGitPropertiesFile>false</generateGitPropertiesFile><!-- somehow necessary. otherwise the variables are not available in the pom -->
+				</configuration>
+			</plugin>
 			<plugin>
 	            <groupId>com.spotify</groupId>
 	            <artifactId>dockerfile-maven-plugin</artifactId>
@@ -84,7 +102,7 @@
 				</executions>
 	            <configuration>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
-					<imageName>${project.version}:${git.commit.id.abbrev}</imageName>
+					<imageName>${project.version}:${version.number}</imageName>
 	                <serverId>index.docker.io</serverId>
 	      		<registryUrl>https://index.docker.io:443/v1/</registryUrl>
 	            </configuration>
