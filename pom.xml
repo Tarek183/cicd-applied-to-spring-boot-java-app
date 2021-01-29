@@ -102,7 +102,7 @@
 				</executions>
 	            <configuration>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
-					<imageName>${project.version}:${version.number}</imageName>
+					<tag>${project.version}.${version.number}</tag>
 	                <serverId>index.docker.io</serverId>
 	      		<registryUrl>https://index.docker.io:443/v1/</registryUrl>
 	            </configuration>
