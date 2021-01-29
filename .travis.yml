@@ -8,7 +8,6 @@ services:
  #Linking Travis CI and Docker
  - docker
 
-
 # SonarCloud
 addons:
  sonarcloud:
@@ -18,8 +17,9 @@ addons:
 
 before_install:
  - mvn clean
- - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
- - docker pull openjdk:8-jdk-alpine
+ - if [[ "$TRAVIS_BRANCH" == "main" ]]; then
+      echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
+      docker pull openjdk:8-jdk-alpine
 
 install:
  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
