@@ -18,8 +18,8 @@ addons:
 before_install:
  - mvn clean
  - if [[ "$TRAVIS_BRANCH" == "main" ]]; then
-      echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
-      docker pull openjdk:8-jdk-alpine
+      echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin;
+      docker pull openjdk:8-jdk-alpine;
    fi
 
 install:
