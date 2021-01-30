@@ -81,10 +81,9 @@
 					</execution>
 				</executions>
 				<configuration>
+					<dateFormat>yyyyMMdd-HHmmss</dateFormat><!--  human-readable part of the version number -->
 					<dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
 					<generateGitPropertiesFile>false</generateGitPropertiesFile><!-- somehow necessary. otherwise the variables are not available in the pom -->
-					<dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
-					<dateFormatTimeZone>GMT-08:00</dateFormatTimeZone>
 				</configuration>
 			</plugin>
 			<plugin>
